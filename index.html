@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Car | Lucro com Seminovos Sem Estoque</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* CONFIGURAÇÕES DE DESIGN PREMIUM E CORES */
+        :root {
+            --primary: #FF0000; /* Vermelho Ação Agressivo */
+            --primary-hover: #D40000;
+            --dark: #050505;    /* Preto Profundo */
+            --surface: #121212; /* Cinza Escuro de Contraste */
+            --white: #FFFFFF;
+            --gray: #B0B0B0;
+            --gold: #D4AF37;   /* Dourado para Destaque de Autoridade */
+            --whatsapp: #25D366;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* RESET BÁSICO */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--dark); 
+            color: var(--white); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+
+        /* CONTAINERS E TIPOGRAFIA */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+        .highlight { color: var(--primary); }
+        h1, h2, h3 { text-transform: uppercase; font-weight: 900; letter-spacing: -1px; }
+
+        /* HEADER MINIMALISTA */
+        header {
+            padding: 20px 0;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-size: 1.6rem; font-weight: 900; }
+        .logo span { color: var(--primary); }
+
+        /* HERO - COROLLA BRANCO */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 25px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.25rem; color: var(--gray); max-width: 850px; margin: 0 auto 40px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+
+        /* ESTILIZAÇÃO DOS BOTÕES */
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            padding: 22px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-main { background: var(--primary); color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.35); }
+        .btn-main:hover { transform: translateY(-5px); background: var(--primary-hover); box-shadow: 0 20px 40px rgba(255, 0, 0, 0.45); }
+        
+        .btn-wa { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.2); }
+        .btn-wa:hover { border-color: var(--whatsapp); color: var(--whatsapp); background: rgba(37, 211, 102, 0.1); }
+
+        /* NOVA SEÇÃO: DESTAQUE DE AUTORIDADE (10 ANOS) */
+        .authority-badge {
+            padding: 30px 0;
+            background: linear-gradient(90deg, #0a0a0a 0%, #151515 50%, #0a0a0a 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+        .badge-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .badge-content i { color: var(--gold); font-size: 1.5rem; }
+        .badge-content span {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+        .badge-content strong { color: var(--gold); font-weight: 900; }
+
+        /* SEÇÃO OPORTUNIDADE */
+        .opportunity { padding: 100px 0; background: var(--surface); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .opportunity h2 { font-size: 2.8rem; margin-bottom: 25px; line-height: 1.2; }
+        .opportunity p { font-size: 1.15rem; color: var(--gray); margin-bottom: 20px; }
+        
+        .opportunity-img {
+            width: 100%; 
+            border-radius: 15px; 
+            border: 2px solid #222;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* PASSOS DO MÉTODO (GRID) */
+        .how-it-works { padding: 100px 0; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 50px; }
+        .step-card { 
+            background: #181818; padding: 45px 35px; border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.03); transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .step-card:hover { border-color: var(--primary); transform: translateY(-8px); }
+        .step-num { font-size: 4rem; font-weight: 900; color: rgba(255,0,0,0.1); position: absolute; top: -10px; right: 10px; }
+        .step-card h3 { margin-bottom: 12px; font-size: 1.3rem; position: relative; }
+        .step-card p { color: var(--gray); position: relative; font-size: 0.95rem;}
+
+        /* SEÇÃO O QUE VAI APRENDER */
+        .learning { padding: 100px 0; background: var(--dark); }
+        .check-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 50px; }
+        .check-list li { display: flex; align-items: flex-start; gap: 15px; font-size: 1.1rem; }
+        .check-list i { color: var(--primary); font-size: 1.4rem; margin-top: 3px; }
+
+        /* CTA FINAL E BOX DE PREÇO */
+        .final-cta { padding: 120px 0; text-align: center; background: radial-gradient(circle at center, #1a0505 0%, #050505 100%); }
+        .payment-box { 
+            max-width: 550px; margin: 50px auto; background: var(--surface); 
+            padding: 50px 40px; border-radius: 20px; border: 1px solid rgba(255,0,0,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+        .price-old { color: var(--gray); text-decoration: line-through; font-size: 1.2rem; }
+        .price-main { font-size: 4.5rem; font-weight: 900; color: var(--white); display: block; margin: 10px 0; }
+        .price-main small { font-size: 1.5rem; vertical-align: middle; margin-right: 5px; }
+
+        /* FOOTER SIMPLES */
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid #1a1a1a; color: #444; font-size: 0.85rem; }
+
+        /* AJUSTES DE RESPONSIVIDADE (MOBILE) */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero { padding-top: 150px; }
+            .check-list { grid-template-columns: 1fr; }
+            .btn { width: 100%; justify-content: center; padding: 18px 30px;}
+            .price-main { font-size: 3.5rem; }
+            .opportunity h2 { font-size: 2.2rem; }
+            .badge-content { flex-direction: column; text-align: center; border-radius: 15px; gap: 10px; }
+        }
+
+        /* ANIMAÇÃO DE REVELAÇÃO AO ROLAR */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">DR <span>CAR</span></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="reveal active">DOMINE O MERCADO DE <span class="highlight">SEMINOVOS</span> SEM PRECISAR COMPRAR UM ÚNICO CARRO</h1>
+            <p class="reveal active">Existe um atalho para lucrar alto intermediando vendas de veículos. Pare de trocar tempo por pouco dinheiro e aprenda o método Dr Car.</p>
+            <div class="btn-group reveal active">
+                <a href="https://pay.kiwify.com.br/uaakycP" class="btn btn-main"><i class="fas fa-shopping-cart"></i> GARANTIR MINHA VAGA</a>
+                <a href="https://wa.me/5571983828376?text=Ol%C3%A1%20quero%20trabalhar%20com%20voc%C3%AAs%20da%20Dr%20Car" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> SUPORTE PELO WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="authority-badge reveal">
+        <div class="container">
+            <div class="badge-content">
+                <i class="fas fa-award"></i>
+                <span>SÓLIDA EXPERIÊNCIA DE <strong>10 ANOS</strong> NO MERCADO DE INTERMEDIAÇÃO DE VEÍCULOS</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="opportunity">
+        <div class="container">
+            <div class="grid-2">
+                <div class="reveal">
+                    <h2>VOCÊ ESTÁ <span class="highlight">PERDENDO DINHEIRO</span> TODOS OS DIAS.</h2>
+                    <p>Milhares de carros são vendidos agora. Em 90% das vezes, existe um vendedor querendo pressa e um comprador querendo segurança.</p>
+                    <p>Você será a ponte. O <strong>Dr Car</strong> te ensina a ganhar comissões de R$ 2.000, R$ 5.000 ou até R$ 10.000 por cada intermediação, sem risco de estoque parado e sem investir capital próprio.</p>
+                </div>
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=800&auto=format&fit=crop" alt="Carro em destaque" class="opportunity-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 style="text-align: center;" class="reveal">O MAPA DA <span class="highlight">LUCRATIVIDADE</span></h2>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <span class="step-num">01</span>
+                    <h3>A Caça</h3>
+                    <p>Como identificar oportunidades ocultas em portais e redes sociais antes dos lojistas.</p>
+                </div>
+                <div class="step-card reveal">
+                    <span class="step-num">02</span>
+                    <h3>O Acordo</h3>
+                    <p>O script exato para fazer o proprietário confiar a venda a você sem custos iniciais.</p>
+                </div>
+                <div class="step-card reveal">
+                    <span class="step-num">03</span>
+                    <h3>Marketing Elite</h3>
+                    <p>Fotos, vídeos e anúncios que vendem o carro em menos de 48 horas.</p>
+                </div>
+                <div class="step-card reveal">
+                    <span class="step-num">04</span>
+                    <h3>Lucro no Bolso</h3>
+                    <p>Finalização da venda e recebimento imediato da sua parte. Sem burocracia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="learning">
+        <div class="container">
+            <div class="reveal">
+                <h2 style="text-align: center;">O QUE VOCÊ VAI <span class="highlight">DOMINAR</span></h2>
+                <ul class="check-list">
+                    <li><i class="fas fa-bolt"></i> Como começar do zero absoluto sem capital</li>
+                    <li><i class="fas fa-bolt"></i> Avaliação técnica rápida: o que olhar num carro</li>
+                    <li><i class="fas fa-bolt"></i> Psicologia de venda para fechar negócios rápidos</li>
+                    <li><i class="fas fa-bolt"></i> Como escalar para faturar 5 dígitos por mês</li>
+                    <li><i class="fas fa-bolt"></i> Modelos de contratos de segurança jurídica</li>
+                    <li><i class="fas fa-bolt"></i> Estratégias para criar sua própria marca no mercado</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="checkout">
+        <div class="container">
+            <div class="reveal">
+                <h2>O SEU NOVO ESTILO DE VIDA COMEÇA AQUI</h2>
+                <p>O preço de ficar onde você está é muito maior do que o investimento neste treinamento.</p>
+                
+                <div class="payment-box">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">OFERTA DE LANÇAMENTO</h3>
+                    <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Treinamento Dr Car Completo</p>
+                    
+                    <span class="price-old">De R$ 997,00</span>
+                    <span class="price-main"><small>12x</small>29,82</span>
+                    <p>ou R$ 300,00 à vista</p>
+                    
+                    <br>
+                    <a href="https://pay.kiwify.com.br/uaakycP" class="btn btn-main" style="width: 100%; justify-content: center; font-size: 1.2rem;">
+                        <i class="fas fa-check-circle"></i> QUERO MINHA VAGA AGORA
+                    </a>
+                    
+                    <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; opacity: 0.7;">
+                        <img src="https://img.icons8.com/color/48/000000/visa.png" width="35" alt="Visa">
+                        <img src="https://img.icons8.com/color/48/000000/mastercard.png" width="35" alt="Master">
+                        <img src="https://img.icons8.com/color/48/000000/pix.png" width="35" alt="Pix">
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.75rem; color: #666;">
+                        <i class="fas fa-lock"></i> AMBIENTE DE PAGAMENTO 100% SEGURO VIA KIWIFY
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px; opacity: 0.3;">DR <span>CAR</span></div>
+            <p>© 2024 Dr Car - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId !== "#") {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+h(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId !== "#") {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
